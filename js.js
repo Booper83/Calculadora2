@@ -27,12 +27,12 @@ siete.addEventListener("click", numeros);
 ocho.addEventListener("click", numeros);
 nueve.addEventListener("click", numeros);
 cero.addEventListener("click", numeros);
-suma.addEventListener("click", numeros);
-resta.addEventListener("click", numeros);
-multi.addEventListener("click", numeros);
-dividir.addEventListener("click", numeros);
-igual.addEventListener("click", numeros);
-cac.addEventListener("click", numeros);
+suma.addEventListener("click", sumaOperador);
+resta.addEventListener("click", sumaOperador);
+multi.addEventListener("click", sumaOperador);
+dividir.addEventListener("click", sumaOperador);
+igual.addEventListener("click", resultado);
+cac.addEventListener("click", borrarPantalla);
 
 //Arrays
 const array1 = [];
@@ -42,26 +42,40 @@ const operador = [];
 function numeros(e) {
   // console.log(e.target.innerText);
 
-  if (e.target.innerText === "+"|| e.target.innerText === "-" || e.target.innerText === "*" || e.target.innerText === "/" ) {
-    console.log("esto es un operador");
-    operador[0] = e.target.innerText;
+  // if (e.target.innerText === "+"|| e.target.innerText === "-" || e.target.innerText === "*" || e.target.innerText === "/" ) {
+  //   console.log("esto es un operador");
+  //   operador[0] = e.target.innerText;
+  // }
+
+  if (operador == '') {
+    if (e.target.innerText == 1|| e.target.innerText === '0' || e.target.innerText == 2 || e.target.innerText == 3 || e.target.innerText == 4 || e.target.innerText == 5 || e.target.innerText == 6 || e.target.innerText == 7 || e.target.innerText == 8 || e.target.innerText == 9) {
+      console.log('Esto es un numero');
+      array1.push(e.target.innerText);
   }
-  if (e.target.innerText == 1|| e.target.innerText === '0' || e.target.innerText == 2 || e.target.innerText == 3 || e.target.innerText == 4 || e.target.innerText == 5 || e.target.innerText == 6 || e.target.innerText == 7 || e.target.innerText == 8 || e.target.innerText == 9) {
-    console.log('Esto es un numero');
-  }
+}
+  if (operador != '') {
+    array2.push(e.target.innerText);
+  } 
   if (e.target.innerText === "=") {
     console.log('Estas pidiendo el resultado');
   } 
     
-   
+
     
   console.log(operador);
-
-  // if (operador.length === 0) {
-  //   array1.push(e.target.innerText);
-  // } else {
-  //   console.log("array con cosas");
-  // }
-  // console.log(array1);
+  console.log(array1);
+  console.log(array2);
 }
-// });
+
+function sumaOperador(e){
+  console.log('añadiendo operador al array');
+  operador[0] = e.target.innerText;
+}
+
+function resultado(e){
+  console.log('estas pidiendo el resultado');
+}
+
+function borrarPantalla(e){
+  console.log('borrando pantalla');
+}
