@@ -28,10 +28,10 @@ ocho.addEventListener("click", numeros);
 nueve.addEventListener("click", numeros);
 cero.addEventListener("click", numeros);
 suma.addEventListener("click", sumaOperador);
-resta.addEventListener("click", sumaOperador);
-multi.addEventListener("click", sumaOperador);
-dividir.addEventListener("click", sumaOperador);
-igual.addEventListener("click", resultado);
+// resta.addEventListener("click", restaOperador);
+// multi.addEventListener("click", multiOperador);
+// dividir.addEventListener("click", dividirOperador);
+// igual.addEventListener("click", resultado);
 cac.addEventListener("click", borrarPantalla);
 
 //Arrays
@@ -40,42 +40,66 @@ const array2 = [];
 const operador = [];
 
 function numeros(e) {
-  // console.log(e.target.innerText);
-
-  // if (e.target.innerText === "+"|| e.target.innerText === "-" || e.target.innerText === "*" || e.target.innerText === "/" ) {
-  //   console.log("esto es un operador");
-  //   operador[0] = e.target.innerText;
-  // }
-
+ 
   if (operador == '') {
-    if (e.target.innerText == 1|| e.target.innerText === '0' || e.target.innerText == 2 || e.target.innerText == 3 || e.target.innerText == 4 || e.target.innerText == 5 || e.target.innerText == 6 || e.target.innerText == 7 || e.target.innerText == 8 || e.target.innerText == 9) {
+    // if (e.target.innerText == 1|| e.target.innerText === '0' || e.target.innerText == 2 || e.target.innerText == 3 || e.target.innerText == 4 || e.target.innerText == 5 || e.target.innerText == 6 || e.target.innerText == 7 || e.target.innerText == 8 || e.target.innerText == 9) {
       console.log('Esto es un numero');
       array1.push(e.target.innerText);
-  }
+      ponerPantalla();
+  
 }
   if (operador != '') {
     array2.push(e.target.innerText);
+    ponerPantalla();
   } 
-  if (e.target.innerText === "=") {
-    console.log('Estas pidiendo el resultado');
-  } 
-    
-
-    
+      
   console.log(operador);
   console.log(array1);
   console.log(array2);
 }
 
+function ponerPantalla(){
+  console.log('colocando en pantalla');
+  if (operador == '') {
+    let suma1 = '';
+    for (let i = 0; i < array1.length; i++) {
+      suma1 += array1[i]      
+    }
+    pant.innerText = suma1;
+    console.log(suma1);
+  } 
+  if (operador != ''){
+    let suma2 = '';
+    for (let i = 0; i < array2.length; i++) {
+      suma2 += array2[i];      
+    }
+    pant.innerText = suma2;
+  }
+}
+
 function sumaOperador(e){
   console.log('añadiendo operador al array');
-  operador[0] = e.target.innerText;
+  let suma1 = '';
+  for (let i = 0; i < array1.length; i++) {
+    suma1 += array1[i]      
+  }
+  let suma2 = '';
+  for (let i = 0; i < array2.length; i++) {
+    suma2 += array2[i];      
+  }
+
+  pant.innerText = suma1 + suma2;
 }
 
-function resultado(e){
-  console.log('estas pidiendo el resultado');
-}
+
 
 function borrarPantalla(e){
-  console.log('borrando pantalla');
+  console.log('borrando');
+  pant.innerText= 0;
+  array1.length = 0;
+  array2.length = 0;
+  operador.length = 0;
+  console.log(array1);
+  console.log(array2);
+
 }
